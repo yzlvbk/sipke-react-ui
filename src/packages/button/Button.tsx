@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-
+import classes from '../../utils/classes'
+import Wave from '../../utils/wave/Wave'
 import './style'
+import Icon from '../icon/Icon'
+
 
 interface ButtonProps {
   icon?: string,
@@ -11,6 +14,7 @@ interface ButtonProps {
   disabled?: boolean,
   ghost?: boolean,
   htmlType?: 'button' | 'submit' | 'reset',
+  className?: string,
   style?: React.CSSProperties
   onClick?: React.MouseEventHandler
   onMouseEnter?: React.MouseEventHandler
@@ -37,13 +41,46 @@ export default class Button extends Component<ButtonProps, State> {
     htmlType: 'button'
   }
 
-  render() {
-    console.log(this)
+  public renderIcon = () => {
+    const { icon, size, loading } = this.props
+    const className = classes(componentName, 'icon', [size], { loading })
+
+    return loading ? (
+      <Icon name='loading' className={className} />
+    ) : (
+        icon && <Icon name={icon} className={className} />
+      )
+
+  }
+
+  public render() {
+    const cn = componentName
+    const {
+      position,
+      icon,
+      loading,
+      size,
+      type,
+      htmlType,
+      ghost,
+      style,
+      className,
+      disabled,
+      children,
+      ...rest
+    } = this.props
+
+    const buttonClassName = classes(cn, '', [position, size, type, className], { ghost, disabled })
+
 
     return (
-      <button className="spike-button">
-        <span>button</span>
-      </button>
+      <Wave>
+        <button className={buttonClassName} style={style} type={htmlType} disabled={disabled} {...rest}>
+          {this.renderIcon()}
+          <span className={classes(cn, 'inner')}>{children}</span>
+        </button>
+      </Wave>
+
     )
   }
 }

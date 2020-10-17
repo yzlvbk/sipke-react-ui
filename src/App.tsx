@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Button from './packages/button/Button'
+// import ButtonPage from './pages/ButtonPage'
+import AffixPage from './pages/AffixPage'
 
 function App() {
   return (
     <div className="App">
-      <Button />
+      {/* <ButtonPage /> */}
+      <AffixPage />
     </div>
   );
 }
