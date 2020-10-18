@@ -1,0 +1,93 @@
+@import '../../../style/mixins.scss';
+
+.spike-tabs {
+  font-size: 14px;
+  line-height: 22px;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: red;
+
+  &.vertical {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  >.spike-tabs-head {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: pink;
+
+    >.spike-tabs-title {
+      padding: 12px 16px;
+      color: rgba(0, 0, 0, 0.65);
+      cursor: pointer;
+      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+      &:not(:last-child) {
+        margin-right: 22px;
+      }
+
+      &.active {
+        color: $brand;
+      }
+
+      &.disabled {
+        color: rgba(0, 0, 0, 0.25);
+        cursor: not-allowed;
+      }
+    }
+
+    >.spike-tabs-role {
+      position: absolute;
+      background-color: $brand;
+      border-radius: 1px;
+      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+      &.horizontal {
+        height: 3px;
+        left: 0;
+        bottom: 0;
+      }
+
+      &.vertical {
+        width: 3px;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    &.vertical {
+      flex-direction: column;
+      border-bottom: none;
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  >.spike-tabs-body {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+    >.spike-tabpane {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    &.vertical {
+      flex-direction: column;
+
+      &>.spike-tabpane {
+        height: 100%;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
