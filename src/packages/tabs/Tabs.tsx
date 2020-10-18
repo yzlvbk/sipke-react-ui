@@ -75,13 +75,11 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
     disabled: boolean,
     e: React.MouseEvent
   ) => {
-    if (disabled) {
-      return;
-    }
+    if (disabled) return
     if (key !== this.state.derivedActiveKey) {
       this.setState({
         derivedActiveKey: key
-      }, () => console.log(this.state.derivedActiveKey))
+      })
       if (this.props.onChange) {
         this.props.onChange(key)
       }
@@ -89,41 +87,23 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
   }
 
   public locateUnderline = (key: string, node: HTMLLIElement) => {
-    console.log('locateUnderline', key, node)
     const { headRef: head, bodyRef: body, roleRef: role, keys } = this
     const { vertical } = this.props
-    console.log('head', head)
-    console.log('body', body)
-    console.log('role', role)
-    console.log('keys', keys)
-    console.log('vertical', vertical)
     const { left: headLeft, top: headTop } = head.getBoundingClientRect()
     const { left, right, top, bottom } = node.getBoundingClientRect()
-    console.log('headLeft', headLeft)
-    console.log('headTop', headTop)
-    console.log('left', left)
-    console.log('right', right)
-    console.log('top', top)
-    console.log('bottom', bottom)
     if (vertical) {
       // 垂直
       role.style.height = bottom - top + "px";
       role.style.transform = `translateY(${top - headTop}px)`;
-
       const index: number = keys.indexOf(key)
       body.style.transform = `translateY(${-100 * index}%)`
     } else {
       // 水平
       role.style.width = right - left + 'px'
       role.style.transform = `translateX(${left - headLeft}px)`
-
       const index: number = keys.indexOf(key)
       body.style.transform = `translateX(${-100 * index}%)`
     }
-
-
-
-
   }
 
   componentDidMount() {
@@ -153,6 +133,6 @@ export default class Tabs extends React.Component<ITabsProps, ITabsState> {
           <li className='spike-tabpane'>tabpane3</li>
         </ul>
       </div>
-    );
+    )
   }
 }
