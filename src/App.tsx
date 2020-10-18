@@ -3,7 +3,8 @@ import React from 'react';
 // import AffixPage from './pages/AffixPage'
 // import SwitchPage from './pages/SwitchPage'
 // import TabsPage from './pages/TabsPage'
-import MessagePage from './pages/MessagePage'
+// import MessagePage from './pages/MessagePage'
+import ModalPage from './pages/ModalPage'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <AffixPage /> */}
       {/* <SwitchPage /> */}
       {/* <TabsPage /> */}
-      <MessagePage />
+      {/* <MessagePage /> */}
+      <ModalPage />
     </div>
   );
 }
