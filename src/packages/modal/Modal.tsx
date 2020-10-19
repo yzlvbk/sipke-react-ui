@@ -81,7 +81,7 @@ export default class Modal extends Component<IModalProps, IModalState> {
     }
 
     if (modalId) {
-      // Modal.removeModal(modalId) 
+      Modal.removeModal(modalId)
     }
   }
 
