@@ -8,8 +8,15 @@ interface State {
 
 }
 
+
 export default class ModalPage extends Component<Props, State> {
   state = { visible: false }
+
+  content = <section>
+    <div>Some contents...</div>
+    <div>Some contents...</div>
+    <div>Some contents...</div>
+  </section>
 
   render() {
     return (
@@ -27,6 +34,11 @@ export default class ModalPage extends Component<Props, State> {
           <div>Some contents...</div>
           <div>Some contents...</div>
         </Modal>
+
+        <section>
+          <div>命令式调用</div>
+          <button onClick={() => { Modal.openModal({ title: 'imperative', content: this.content }) }}>openModal</button>
+        </section>
       </div>
     )
   }

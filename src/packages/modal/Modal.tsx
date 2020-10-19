@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { openModal, removeModal } from './openModal'
 import classes from '../../utils/classes'
 import Transition from '../transition/Transition'
 import Button from '../button/Button'
@@ -41,7 +42,11 @@ interface IModalState {
 const componentName = 'Modal'
 
 export default class Modal extends Component<IModalProps, IModalState> {
-  public static displayName = componentName
+  static displayName = componentName
+
+  static openModal = openModal
+
+  static removeModal = removeModal
 
   private timeout: any
   private bodyOverflow!: string | ''
@@ -71,8 +76,6 @@ export default class Modal extends Component<IModalProps, IModalState> {
     document.body.style.overflow = this.bodyOverflow
     document.body.style.paddingRight = this.bodyPaddingRight
     const { modalId, afterClose } = this.props
-    console.log('close', modalId)
-
     if (afterClose) {
       afterClose()
     }
@@ -106,10 +109,10 @@ export default class Modal extends Component<IModalProps, IModalState> {
         onConfirm(e)
       }
     }
-    // if (mode === 'imperative' && promiseHandler) {
-    //   this.closeModal()
-    //   promiseHandler.resolve()
-    // }
+    if (mode === 'imperative' && promiseHandler) {
+      this.closeModal()
+      promiseHandler.resolve()
+    }
   }
 
   public handleOnCancel = (e: React.MouseEvent) => {
@@ -122,10 +125,10 @@ export default class Modal extends Component<IModalProps, IModalState> {
         onCancel(e)
       }
     }
-    // if (mode === 'imperative' && promiseHandler) {
-    //   this.closeModal()
-    //   promiseHandler.reject()
-    // }
+    if (mode === 'imperative' && promiseHandler) {
+      this.closeModal()
+      promiseHandler.reject()
+    }
   }
 
   public componentDidMount() {
