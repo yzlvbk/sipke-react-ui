@@ -4,7 +4,8 @@ import React from 'react';
 // import SwitchPage from './pages/SwitchPage'
 // import TabsPage from './pages/TabsPage'
 // import MessagePage from './pages/MessagePage'
-import ModalPage from './pages/ModalPage'
+// import ModalPage from './pages/ModalPage'
+import SpinPage from './pages/SpinPage'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       {/* <SwitchPage /> */}
       {/* <TabsPage /> */}
       {/* <MessagePage /> */}
-      <ModalPage />
+      {/* <ModalPage /> */}
+      <SpinPage />
     </div>
   );
 }

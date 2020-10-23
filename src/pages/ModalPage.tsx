@@ -37,7 +37,7 @@ export default class ModalPage extends Component<Props, State> {
 
         <section>
           <div>命令式调用</div>
-          <button onClick={() => { Modal.openModal({ title: 'imperative', content: this.content }) }}>openModal</button>
+          <button onClick={() => { Modal.openModal({ title: 'imperative', content: this.content }).then(() => console.log('resolve')).catch(() => console.log('reject')) }}>openModal</button>
         </section>
       </div>
     )
