@@ -39,8 +39,6 @@ export default class Spin extends React.Component<ISpinProps> {
             {tip && <span className={classes(cn, 'tip')}>{tip}</span>}
           </div>
         </Transition>
-
-
         {children}
       </div>
     )
