@@ -1,44 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spike-react
 
-## Available Scripts
+## 一套好用的 PC 端 React 组件库
 
-In the project directory, you can run:
+![](https://img.shields.io/badge/license-MIT-000000.svg)
 
-### `yarn start`
+> 本组件库仅供学习交流，请勿在生产环境中使用
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 安装
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+$ npm install spike-react
+$ yarn add spike-react
+```
 
-### `yarn test`
+## 使用
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import { Button } from 'spike-react'
+import 'spike-react/lib/spike-react.css'
 
-### `yarn build`
+ReactDOM.render(
+  <div>
+    <Button>Default</Button>
+  </div>,
+  mountNode
+)
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+需要注意的是，样式文件需要单独引入。
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 特别提醒
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+使用 spike-react 时，需要使用 border-box 盒模型，否则会影响样式。代码示例：
 
-### `yarn eject`
+```css
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+如果您觉得还不错，请 star
